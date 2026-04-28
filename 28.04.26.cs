@@ -1,5 +1,3 @@
-ДОДЕЛАТЬ!!!!
-
 using System.Text.Json;
 using Newtonsoft.Json;
 namespace _28._04._26
@@ -10,9 +8,19 @@ namespace _28._04._26
         {
             private string _name;
             private int[] _stars;
+            public string Name => _name;
+            public int[] Stars => _stars.ToArray();
+            public Movie(string name)
+            {
+                _name = name;
+                _stars = new int[0];
+            }
+            public void Add(int star)
+            {
+                Array.Resize(ref _stars, _stars.Length+1);
+                _stars[_stars.Length-1] = star;
+            }
         }
-
-
         static void Main(string[] args)
         {
             Movie m = new Movie("Star wars");
@@ -53,8 +61,8 @@ namespace _28._04._26
             //    File.Create(filePath).Close();
             //    Console.WriteLine("File created");
             //}
-            string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string filePath = Path.Combine(folderPath ,"example.txt");
+           // string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //string filePath = Path.Combine(folderPath ,"example.txt");
             Console.WriteLine(folderPath);//  путь до файла
             Console.WriteLine(filePath);
 
